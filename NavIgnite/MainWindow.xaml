@@ -3,10 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         xmlns:local="clr-namespace:NavIgnite"
         mc:Ignorable="d"
         Title="NavIgnite" Height="600" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
-
+        <DockPanel DockPanel.Dock="Top">
+            <Button x:Name="ButtonGo" DockPanel.Dock="Right" Click="ButtonGo_Click" Content="Go"/>
+            <TextBox Name="addressBar" KeyDown="AddressBar_KeyDown"/>
+        </DockPanel>
+        <wv2:WebView2 Name="webView" Source="https://www.microsoft.com" Margin="0,40,0,0"/>
     </Grid>
 </Window>

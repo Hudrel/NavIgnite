@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "XHSRCVBM40r56MvtUrYxoi73xdev2d2yrtWl1voBT6b6OA1sMxr4175hqZnqjpyyTDmFLceJhTQ73RYehu9iEw==",
+  "dgSpecHash": "FhTdUHuOS9HgYYC+Z+bAZmR9odklvbWKQV3PhyQFAd3AnbkII0Td7M9P9H8KxGjGz5PzqhYq56DGFzLUdJdjEg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Steeve\\Desktop\\NavIgnite\\NavIgnite\\NavIgnite.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Steeve\\.nuget\\packages\\microsoft.web.webview2\\1.0.2210.55\\microsoft.web.webview2.1.0.2210.55.nupkg.sha512"
+  ],
   "logs": []
 }
