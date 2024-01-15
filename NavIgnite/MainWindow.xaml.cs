@@ -86,5 +86,30 @@ namespace NavIgnite
             });
             webView.CoreWebView2.PostWebMessageAsString(uri);
         }
+
+        private void ButtonBackPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (webView != null && webView.CoreWebView2 != null && webView.CoreWebView2.CanGoBack)
+            {
+                webView.CoreWebView2.GoBack();
+            }
+        }
+
+        private void ButtonNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (webView != null && webView.CoreWebView2 != null && webView.CoreWebView2.CanGoForward)
+            {
+                webView.CoreWebView2.GoForward();
+            }
+        }
+
+        private void ButtonRefreshPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (webView != null && webView.CoreWebView2 != null)
+            {
+                webView.CoreWebView2.Reload();
+            }
+        }
+
     }
 }

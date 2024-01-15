@@ -8,10 +8,23 @@
         mc:Ignorable="d"
         Title="NavIgnite" Height="600" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
-        <DockPanel DockPanel.Dock="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Barre de navigation -->
+            <RowDefinition Height="*"/>
+            <!-- Contenu principal (WebView) -->
+        </Grid.RowDefinitions>
+
+        <!-- Barre de navigation -->
+        <DockPanel Grid.Row="0" Background="#FF383737">
+            <Button x:Name="ButtonBackPage" DockPanel.Dock="Left" Click="ButtonBackPage_Click" Content="&lt;"/>
+            <Button x:Name="ButtonNextPage" DockPanel.Dock="Left" Click="ButtonNextPage_Click" Content=">" Margin="10,0,0,0"/>
+            <Button x:Name="ButtonRefreshPage" DockPanel.Dock="Left" Click="ButtonRefreshPage_Click" Content="Refresh" Margin="10,0,0,0"/>
             <Button x:Name="ButtonGo" DockPanel.Dock="Right" Click="ButtonGo_Click" Content="Go"/>
-            <TextBox Name="addressBar" KeyDown="AddressBar_KeyDown"/>
+            <TextBox Name="addressBar" KeyDown="AddressBar_KeyDown" Width="520" HorizontalAlignment="Right" Margin="0,0,10,0"/>
         </DockPanel>
-        <wv2:WebView2 Name="webView" Source="https://www.microsoft.com" Margin="0,40,0,0"/>
+
+        <!-- Contenu principal (WebView) -->
+        <wv2:WebView2 Name="webView" Grid.Row="1" Margin="0,40,0,0" Source="https://www.google.fr"/>
     </Grid>
 </Window>
