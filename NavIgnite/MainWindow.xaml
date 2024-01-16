@@ -10,13 +10,25 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <!-- Barre de menu -->
+            <RowDefinition Height="Auto"/>
             <!-- Barre de navigation -->
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <!-- Zone de favoris -->
+            <RowDefinition Height="Auto"/>
             <!-- Contenu principal (WebView) -->
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- Barre de menu -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="Historique"/>
+            <MenuItem Header="Options"/>
+            <!-- Ajoutez d'autres éléments de menu ici -->
+        </Menu>
+
         <!-- Barre de navigation -->
-        <DockPanel Grid.Row="0" Background="#FF383737">
+        <DockPanel Grid.Row="1" Background="#FF383737">
             <Button x:Name="ButtonBackPage" DockPanel.Dock="Left" Click="ButtonBackPage_Click" Content="&lt;"/>
             <Button x:Name="ButtonNextPage" DockPanel.Dock="Left" Click="ButtonNextPage_Click" Content=">" Margin="10,0,0,0"/>
             <Button x:Name="ButtonRefreshPage" DockPanel.Dock="Left" Click="ButtonRefreshPage_Click" Content="Refresh" Margin="10,0,0,0"/>
@@ -24,7 +36,16 @@
             <TextBox Name="addressBar" KeyDown="AddressBar_KeyDown" Width="520" HorizontalAlignment="Right" Margin="0,0,10,0"/>
         </DockPanel>
 
+        <!-- Zone de favoris -->
+        <WrapPanel Grid.Row="2" Name="favoritesWrapPanel" Margin="10,5,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <!-- Vous pouvez lier cette WrapPanel à une source de données pour afficher dynamiquement les favoris -->
+            <!-- Exemple statique -->
+            <Button Content="Favorite 1" Margin="5"/>
+            <Button Content="Favorite 2" Margin="5"/>
+            <Button Content="Favorite 3" Margin="5"/>
+        </WrapPanel>
+
         <!-- Contenu principal (WebView) -->
-        <wv2:WebView2 Name="webView" Grid.Row="1" Margin="0,40,0,0" Source="https://www.google.fr"/>
+        <wv2:WebView2 Name="webView" Grid.Row="3" Margin="0,10,0,0" Source="https://www.google.fr"/>
     </Grid>
 </Window>

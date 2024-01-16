@@ -1,3 +1,5 @@
-2024/01/15-14:12:09.553 a20 Reusing MANIFEST C:\Users\Steeve\Desktop\NavIgnite\NavIgnite\bin\Debug\net6.0-windows\NavIgnite.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
-2024/01/15-14:12:09.565 a20 Recovering log #7
-2024/01/15-14:12:09.579 a20 Reusing old log C:\Users\Steeve\Desktop\NavIgnite\NavIgnite\bin\Debug\net6.0-windows\NavIgnite.exe.WebView2\EBWebView\Default\Local Storage\leveldb/000007.log 
+2024/01/16-16:03:25.641 4770 Reusing MANIFEST C:\Users\Steeve\Desktop\NavIgnite\NavIgnite\bin\Debug\net6.0-windows\NavIgnite.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2024/01/16-16:03:25.654 4770 Recovering log #7
+2024/01/16-16:03:25.655 4770 Level-0 table #9: started
+2024/01/16-16:03:25.714 4770 Level-0 table #9: 51013 bytes OK
+2024/01/16-16:03:25.725 4770 Delete type=0 #7
