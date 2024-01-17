@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.Web.WebView2.Core;
 
@@ -10,6 +12,7 @@ namespace NavIgnite
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<string> favorites = new List<string>();
         public MainWindow()
         {
             InitializeComponent();
@@ -108,6 +111,63 @@ namespace NavIgnite
             if (webView != null && webView.CoreWebView2 != null)
             {
                 webView.CoreWebView2.Reload();
+            }
+        }
+
+        private void ButtonAddToFav_Click(object sender, RoutedEventArgs e)
+        {
+            string currentUrl = webView.Source?.AbsoluteUri;
+            if (currentUrl != null)
+            {
+                if (favorites.Contains(currentUrl))
+                {
+                    // Supprimer le favori
+                    favorites.Remove(currentUrl);
+                    UpdateFavoritesPanel();
+                }
+                else
+                {
+                    // Ajouter le favori
+                    favorites.Add(currentUrl);
+                    UpdateFavoritesPanel();
+                }
+            }
+        }
+
+        private void UpdateFavoritesPanel()
+        {
+            favoritesWrapPanel.Children.Clear();
+            foreach (string favorite in favorites)
+            {
+                Button favButton = new Button
+                {
+                    Content = favorite,
+                    Margin = new Thickness(5),
+                };
+                favoritesWrapPanel.Children.Add(favButton);
+            }
+
+            // Mettez à jour l'icône du bouton AddToFavButton en conséquence
+            string currentUrl = webView.Source?.AbsoluteUri;
+            if (currentUrl != null && favorites.Contains(currentUrl))
+            {
+                AddToFavButton.Content = new Image
+                {
+                    Height = 24,
+                    Source = new System.Windows.Media.Imaging.BitmapImage(new System.Uri("\\Assets\\Img\\FavImg.png", System.UriKind.Relative)),
+                    Stretch = System.Windows.Media.Stretch.Fill,
+                    Width = 23,
+                };
+            }
+            else
+            {
+                AddToFavButton.Content = new Image
+                {
+                    Height = 24,
+                    Source = new System.Windows.Media.Imaging.BitmapImage(new System.Uri("\\Assets\\Img\\NotFavImg.png", System.UriKind.Relative)),
+                    Stretch = System.Windows.Media.Stretch.Fill,
+                    Width = 23,
+                };
             }
         }
 

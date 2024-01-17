@@ -1,5 +1,13 @@
-2024/01/16-16:03:25.641 4770 Reusing MANIFEST C:\Users\Steeve\Desktop\NavIgnite\NavIgnite\bin\Debug\net6.0-windows\NavIgnite.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
-2024/01/16-16:03:25.654 4770 Recovering log #7
-2024/01/16-16:03:25.655 4770 Level-0 table #9: started
-2024/01/16-16:03:25.714 4770 Level-0 table #9: 51013 bytes OK
-2024/01/16-16:03:25.725 4770 Delete type=0 #7
+2024/01/17-10:06:30.543 4618 Reusing MANIFEST C:\Users\Steeve\Desktop\NavIgnite\NavIgnite\bin\Debug\net6.0-windows\NavIgnite.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2024/01/17-10:06:30.559 4618 Recovering log #10
+2024/01/17-10:06:30.559 4618 Level-0 table #12: started
+2024/01/17-10:06:30.569 4618 Level-0 table #12: 52932 bytes OK
+2024/01/17-10:06:30.597 4618 Delete type=0 #10
+2024/01/17-10:06:30.599 1ed8 Compacting 4@0 + 0@1 files
+2024/01/17-10:06:30.610 1ed8 Generated table #14@0: 15 keys, 19708 bytes
+2024/01/17-10:06:30.610 1ed8 Compacted 4@0 + 0@1 files => 19708 bytes
+2024/01/17-10:06:30.611 1ed8 compacted to: files[ 0 1 0 0 0 0 0 ]
+2024/01/17-10:06:30.613 1ed8 Delete type=2 #3
+2024/01/17-10:06:30.613 1ed8 Delete type=2 #6
+2024/01/17-10:06:30.614 1ed8 Delete type=2 #9
+2024/01/17-10:06:30.614 1ed8 Delete type=2 #12
