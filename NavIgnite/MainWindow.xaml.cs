@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using Microsoft.Web.WebView2.Core;
 
 namespace NavIgnite
@@ -13,6 +14,8 @@ namespace NavIgnite
     public partial class MainWindow : Window
     {
         private List<string> favorites = new List<string>();
+        private bool isFavorite = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -22,7 +25,7 @@ namespace NavIgnite
 
         private void AddressBar_KeyDown(object sender, KeyEventArgs e)
         {
-            //If Enter press --> Go to the URL
+            // If Enter press --> Go to the URL
             if (e.Key == Key.Enter)
             {
                 NavigateToAddress();
@@ -31,13 +34,13 @@ namespace NavIgnite
 
         private void ButtonGo_Click(object sender, RoutedEventArgs e)
         {
-            //If ButtonGo press --> Go to the URL
+            // If ButtonGo press --> Go to the URL
             NavigateToAddress();
         }
 
         private void NavigateToAddress()
         {
-            //Get the writen URL and go to it
+            // Get the written URL and go to it
             if (webView != null && webView.CoreWebView2 != null)
             {
                 webView.CoreWebView2.Navigate(addressBar.Text);
@@ -46,7 +49,7 @@ namespace NavIgnite
 
         void EnsureHttps(object sender, CoreWebView2NavigationStartingEventArgs args)
         {
-            //Check if the URL contain http, if yes show a toolbox to say the website isn't safe
+            // Check if the URL contains http, if yes, show a toolbox to say the website isn't safe
             String uri = args.Uri;
             if (!uri.StartsWith("https://"))
             {
@@ -59,10 +62,10 @@ namespace NavIgnite
         {
             await webView.EnsureCoreWebView2Async(null);
 
-            //Get the default URL
+            // Get the default URL
             string defaultUrl = webView.Source?.ToString();
 
-            //Update the URL
+            // Update the URL
             Dispatcher.Invoke(() =>
             {
                 addressBar.Text = defaultUrl;
@@ -81,7 +84,7 @@ namespace NavIgnite
 
         void UpdateAddressBar(object sender, CoreWebView2WebMessageReceivedEventArgs args)
         {
-            //Update the URL with the new get from server
+            // Update the URL with the new get from the server
             String uri = args.TryGetWebMessageAsString();
             Dispatcher.Invoke(() =>
             {
@@ -116,18 +119,29 @@ namespace NavIgnite
 
         private void ButtonAddToFav_Click(object sender, RoutedEventArgs e)
         {
+            isFavorite = !isFavorite;
+
+            /*if (isFavorite)
+            {
+                FavIcon.Source = new BitmapImage(new Uri("/Assets/Img/FavImg.png", UriKind.Relative));
+            }
+            else
+            {
+                FavIcon.Source = new BitmapImage(new Uri("/Assets/Img/NotFavImg.png", UriKind.Relative));
+            }*/
+
             string currentUrl = webView.Source?.AbsoluteUri;
             if (currentUrl != null)
             {
                 if (favorites.Contains(currentUrl))
                 {
-                    // Supprimer le favori
+                    // Remove the favorite
                     favorites.Remove(currentUrl);
                     UpdateFavoritesPanel();
                 }
                 else
                 {
-                    // Ajouter le favori
+                    // Add the favorite
                     favorites.Add(currentUrl);
                     UpdateFavoritesPanel();
                 }
@@ -137,6 +151,7 @@ namespace NavIgnite
         private void UpdateFavoritesPanel()
         {
             favoritesWrapPanel.Children.Clear();
+
             foreach (string favorite in favorites)
             {
                 Button favButton = new Button
@@ -147,29 +162,38 @@ namespace NavIgnite
                 favoritesWrapPanel.Children.Add(favButton);
             }
 
-            // Mettez à jour l'icône du bouton AddToFavButton en conséquence
+            // Update the icon of the AddToFavButton accordingly
             string currentUrl = webView.Source?.AbsoluteUri;
+            Image favImage = new Image
+            {
+                Height = 24,
+                Stretch = System.Windows.Media.Stretch.Fill,
+                Width = 23,
+            };
+
             if (currentUrl != null && favorites.Contains(currentUrl))
             {
-                AddToFavButton.Content = new Image
-                {
-                    Height = 24,
-                    Source = new System.Windows.Media.Imaging.BitmapImage(new System.Uri("\\Assets\\Img\\FavImg.png", System.UriKind.Relative)),
-                    Stretch = System.Windows.Media.Stretch.Fill,
-                    Width = 23,
-                };
+                favImage.Source = new BitmapImage(new Uri("/Assets/Img/FavImg.png", UriKind.Relative));
             }
             else
             {
-                AddToFavButton.Content = new Image
-                {
-                    Height = 24,
-                    Source = new System.Windows.Media.Imaging.BitmapImage(new System.Uri("\\Assets\\Img\\NotFavImg.png", System.UriKind.Relative)),
-                    Stretch = System.Windows.Media.Stretch.Fill,
-                    Width = 23,
-                };
+                favImage.Source = new BitmapImage(new Uri("/Assets/Img/NotFavImg.png", UriKind.Relative));
             }
-        }
 
+            // Use a StackPanel to combine text and image
+            StackPanel stackPanel = new StackPanel
+            {
+                Orientation = Orientation.Horizontal,
+            };
+
+            stackPanel.Children.Add(new TextBlock
+            {
+                Text = "\u0081", // Utilisez le code unicode ici
+                Margin = new Thickness(5),
+                FontFamily = new System.Windows.Media.FontFamily("/NavIgnite;Assets/Fonts/Byom-Icons-Trial.ttf#Byom Icons Trial"),
+            });
+
+            AddToFavButton.Content = stackPanel;
+        }
     }
 }

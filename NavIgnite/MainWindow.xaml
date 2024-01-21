@@ -7,6 +7,9 @@
         xmlns:local="clr-namespace:NavIgnite"
         mc:Ignorable="d"
         Title="NavIgnite" Height="600" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Window.Resources>
+        <FontFamily x:Key="ByomIconsFontFamily">/NavIgnite;Assets/Fonts/Byom-Icons-Trial.ttf#Byom Icons Trial</FontFamily>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -15,7 +18,7 @@
             <!-- Barre de navigation -->
             <RowDefinition Height="Auto"/>
             <!-- Zone de favoris -->
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height ="Auto"/>
             <!-- Contenu principal (WebView) -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -32,8 +35,11 @@
             <Button x:Name="ButtonBackPage" DockPanel.Dock="Left" Click="ButtonBackPage_Click" Content="&lt;"/>
             <Button x:Name="ButtonNextPage" DockPanel.Dock="Left" Click="ButtonNextPage_Click" Content=">" Margin="10,0,0,0"/>
             <Button x:Name="ButtonRefreshPage" DockPanel.Dock="Left" Click="ButtonRefreshPage_Click" Content="Refresh" Margin="10,0,0,0"/>
-            <Button x:Name="AddToFavButton" Click="ButtonAddToFav_Click" Background="{x:Null}">
-                <Image Height="24" Source="/Assets/Img/NotFavImg.png" Stretch="Fill" Width="23"/>
+            <Button x:Name="AddToFavButton" Click="ButtonAddToFav_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="{StaticResource ByomIconsFontFamily}" Text="&#x0081;" FontSize="16" Margin="5"/>
+                    <TextBlock Text="&#x0081;" Margin="5"/>
+                </StackPanel>
             </Button>
             <Button x:Name="ButtonGo" DockPanel.Dock="Right" Click="ButtonGo_Click" Content="Go"/>
             <TextBox Name="addressBar" KeyDown="AddressBar_KeyDown" Width="520" HorizontalAlignment="Right" Margin="0,0,10,0"/>

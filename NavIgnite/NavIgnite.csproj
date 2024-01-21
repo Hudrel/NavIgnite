@@ -8,7 +8,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Img\NotFavImg.png" />
+    <None Remove="FavImg.png" />
+    <None Remove="star.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2210.55" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Img\NotFavImg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="FavImg.png" />
+    <Resource Include="star.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\Fonts\Byom-Icons-Trial.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Img\FavImg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
